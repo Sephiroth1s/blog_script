@@ -1,4 +1,6 @@
 .DS_Store
 .venv/*
 bin/*
-for_test/*
+.vscode/launch.json
+local_script/*
+test/*
