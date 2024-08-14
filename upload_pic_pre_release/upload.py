@@ -1,7 +1,6 @@
 import re
 import requests
 import os
-import sys
 import argparse
 
 # Piclist API的基础URL和API密钥（请替换为实际的API密钥）
@@ -76,7 +75,7 @@ def main(input_file, output_folder):
     
 def process_directory(dirpath, output_folder):
     if os.path.isfile(dirpath):
-        if file.endswith('.md'):
+        if dirpath.endswith('.md'):
             main(dirpath, output_folder)
     else:
         for root, dirs, files in os.walk(dirpath):
