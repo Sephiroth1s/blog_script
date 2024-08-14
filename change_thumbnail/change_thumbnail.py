@@ -41,12 +41,16 @@ def update_thumbnail_in_md_files(directory):
 
                 # 检查是否存在 thumbnail 属性
                 if 'thumbnail' in fm_metadata:
-                    # 提取当前文件中的所有图片链接
-                    image_links = extract_image_links_from_md(fm_content)
-                    thumbnail = select_thumbnail_image(image_links)
+                    if 'http' in post['thumbnail']:
+                        # 如果已经有链接就什么也不干
+                        print(f"Link already exists->{post['thumbnail']}")
+                    else:
+                        # 提取当前文件中的所有图片链接
+                        image_links = extract_image_links_from_md(fm_content)
+                        thumbnail = select_thumbnail_image(image_links)
 
-                    # 更新 thumbnail 属性 frontmatter的方便写法
-                    post['thumbnail'] = thumbnail
+                        # 更新 thumbnail 属性 frontmatter的方便写法
+                        post['thumbnail'] = thumbnail
 
                 # 合并 front matter 和 Markdown 内容
                 # 在 YAML front matter 和 Markdown 内容之间添加两个换行符
